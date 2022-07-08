@@ -15,6 +15,7 @@
 		95247D2C28741DD900D1E4A4 /* BottomControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95247D2B28741DD900D1E4A4 /* BottomControlView.swift */; };
 		95247D2E287425FD00D1E4A4 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95247D2D287425FD00D1E4A4 /* UIImageExtension.swift */; };
 		95247D3528755DB000D1E4A4 /* TopControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95247D3428755DB000D1E4A4 /* TopControlView.swift */; };
+		957026A628781FE000FB47CE /* CardInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957026A528781FE000FB47CE /* CardInfoLabel.swift */; };
 		957EBD04287641A300A13872 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 957EBD03287641A300A13872 /* RxCocoa */; };
 		957EBD06287641A300A13872 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 957EBD05287641A300A13872 /* RxRelay */; };
 		957EBD08287641A300A13872 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 957EBD07287641A300A13872 /* RxSwift */; };
@@ -35,6 +36,7 @@
 		95247D2B28741DD900D1E4A4 /* BottomControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomControlView.swift; sourceTree = "<group>"; };
 		95247D2D287425FD00D1E4A4 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		95247D3428755DB000D1E4A4 /* TopControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopControlView.swift; sourceTree = "<group>"; };
+		957026A528781FE000FB47CE /* CardInfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoLabel.swift; sourceTree = "<group>"; };
 		957EBD0C2876B7D600A13872 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
 		957EBD0E2876BE6D00A13872 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		95ED97F82877CBAE0037CA7A /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				95247D2B28741DD900D1E4A4 /* BottomControlView.swift */,
 				957EBD0E2876BE6D00A13872 /* CardView.swift */,
 				95247D3428755DB000D1E4A4 /* TopControlView.swift */,
+				957026A528781FE000FB47CE /* CardInfoLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			files = (
 				95247D3528755DB000D1E4A4 /* TopControlView.swift in Sources */,
 				95247D1A287412A000D1E4A4 /* HomeViewController.swift in Sources */,
+				957026A628781FE000FB47CE /* CardInfoLabel.swift in Sources */,
 				95247D16287412A000D1E4A4 /* AppDelegate.swift in Sources */,
 				957EBD0D2876B7D600A13872 /* UIView-Extension.swift in Sources */,
 				95ED97F92877CBAE0037CA7A /* UIColor-Extension.swift in Sources */,

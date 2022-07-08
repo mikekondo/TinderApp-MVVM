@@ -8,6 +8,9 @@
 import UIKit
 class CardView: UIView{
 
+    private let gradientLayer = CAGradientLayer()
+
+    // MARK: UIViews
     let cardImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .blue
@@ -18,14 +21,6 @@ class CardView: UIView{
         return iv
     }()
 
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 40, weight: .heavy)
-        label.text = "Taro, 22"
-        label.textColor = .white
-        return label
-    }()
-
     let infoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "info.circle.fill")?.resize(size: .init(width: 40, height: 40)), for: .normal)
@@ -34,62 +29,91 @@ class CardView: UIView{
         return button
     }()
 
-    let residenceLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .regular)
-        label.text = "日本、大阪"
-        label.textColor = .white
-        return label
-    }()
+    private let nameLabel = CardInfoLabel(frame: .zero, labelText: "ご飯、25", labelFont: .systemFont(ofSize: 40, weight: .heavy))
 
-    let hobbyLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 25, weight: .regular)
-        label.text = "ランニング"
-        label.textColor = .white
-        return label
-    }()
+//    let nameLabel: UILabel = {
+//        let label = UILabel()
+//        label.font = .systemFont(ofSize: 40, weight: .heavy)
+//        label.text = "ご飯, 22"
+//        label.textColor = .white
+//        return label
+//    }()
 
-    let introductionLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 25, weight: .regular)
-        label.text = "走り回るのが大好きです"
-        label.textColor = .white
-        return label
-    }()
+    private let residenceLabel = CardInfoLabel(frame: .zero, labelText: "JAPAN", labelFont: .systemFont(ofSize: 20, weight: .regular))
 
-    let goodLabel: UILabel = {
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 45)
-        label.text = "GOOD"
-        label.textColor = .rgb(red: 137, green: 223, blue: 86)
-        label.layer.borderWidth = 3
-        label.layer.borderColor = UIColor.rgb(red: 137, green: 223, blue: 86).cgColor
-        label.layer.cornerRadius = 10
-        label.alpha = 0
-        label.textAlignment = .center
-        return label
-    }()
+//    let residenceLabel: UILabel = {
+//        let label = UILabel()
+//        label.font = .systemFont(ofSize: 20, weight: .regular)
+//        label.text = "日本、大阪"
+//        label.textColor = .white
+//        return label
+//    }()
 
-    let nopeLabel: UILabel = {
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 45)
-        label.text = "NOPE"
-        label.textColor = .rgb(red: 222, green: 110, blue: 110)
-        label.layer.borderWidth = 3
-        label.layer.borderColor = UIColor.rgb(red: 222, green: 110, blue: 110).cgColor
-        label.layer.cornerRadius = 10
-        label.alpha = 0
-        label.textAlignment = .center
-        return label
-    }()
+    private let hobbyLabel = CardInfoLabel(frame: .zero, labelText: "ビーデルとデート", labelFont: .systemFont(ofSize: 25, weight: .regular))
+//    let hobbyLabel: UILabel = {
+//        let label = UILabel()
+//        label.font = .systemFont(ofSize: 25, weight: .regular)
+//        label.text = "ランニング"
+//        label.textColor = .white
+//        return label
+//    }()
+
+    private let introductionLabel = CardInfoLabel(frame: .zero, labelText: "研究が好きです", labelFont: .systemFont(ofSize: 25,weight: .regular))
+
+//    let introductionLabel: UILabel = {
+//        let label = UILabel()
+//        label.font = .systemFont(ofSize: 25, weight: .regular)
+//        label.text = "走り回るのが大好きです"
+//        label.textColor = .white
+//        return label
+//    }()
+
+    private let goodLabel = CardInfoLabel(frame: .zero, labelText: "GOOD", labelColor: .rgb(red: 137, green: 223, blue: 86))
+//    let goodLabel: UILabel = {
+//        let label = UILabel()
+//        label.font = .boldSystemFont(ofSize: 45)
+//        label.text = "GOOD"
+//        label.textColor = .rgb(red: 137, green: 223, blue: 86)
+//        label.layer.borderWidth = 3
+//        label.layer.borderColor = UIColor.rgb(red: 137, green: 223, blue: 86).cgColor
+//        label.layer.cornerRadius = 10
+//        label.alpha = 0
+//        label.textAlignment = .center
+//        return label
+//    }()
+
+    private let nopeLabel = CardInfoLabel(frame: .zero, labelText: "NOPE", labelColor: .rgb(red: 222, green: 110, blue: 110))
+
+//    let nopeLabel: UILabel = {
+//        let label = UILabel()
+//        label.font = .boldSystemFont(ofSize: 45)
+//        label.text = "NOPE"
+//        label.textColor = .rgb(red: 222, green: 110, blue: 110)
+//        label.layer.borderWidth = 3
+//        label.layer.borderColor = UIColor.rgb(red: 222, green: 110, blue: 110).cgColor
+//        label.layer.cornerRadius = 10
+//        label.alpha = 0
+//        label.textAlignment = .center
+//        return label
+//    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
+        setupGradientLayer()
         // panGestureRecognizerは初めて聞いた
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panCardView))
         self.addGestureRecognizer(panGesture)
+    }
+
+    override func layoutSubviews() {
+        gradientLayer.frame = self.bounds
+    }
+
+    private func setupGradientLayer(){
+        gradientLayer.colors = [UIColor.clear.cgColor,UIColor.black.cgColor]
+        gradientLayer.locations = [0.3,1.1]
+        cardImageView.layer.addSublayer(gradientLayer)
     }
 
     // スワイプする時の動き
