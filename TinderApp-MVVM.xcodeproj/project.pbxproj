@@ -21,6 +21,7 @@
 		957EBD0D2876B7D600A13872 /* UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EBD0C2876B7D600A13872 /* UIView-Extension.swift */; };
 		957EBD0F2876BE6D00A13872 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EBD0E2876BE6D00A13872 /* CardView.swift */; };
 		95DAC66428763F590000A543 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 95DAC66328763F590000A543 /* PKHUD */; };
+		95ED97F92877CBAE0037CA7A /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED97F82877CBAE0037CA7A /* UIColor-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		95247D3428755DB000D1E4A4 /* TopControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopControlView.swift; sourceTree = "<group>"; };
 		957EBD0C2876B7D600A13872 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
 		957EBD0E2876BE6D00A13872 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		95ED97F82877CBAE0037CA7A /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				95247D19287412A000D1E4A4 /* HomeViewController.swift */,
-				95247D3428755DB000D1E4A4 /* TopControlView.swift */,
 			);
 			path = ViewContorllers;
 			sourceTree = "<group>";
@@ -98,6 +99,7 @@
 			children = (
 				95247D2B28741DD900D1E4A4 /* BottomControlView.swift */,
 				957EBD0E2876BE6D00A13872 /* CardView.swift */,
+				95247D3428755DB000D1E4A4 /* TopControlView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -107,6 +109,7 @@
 			children = (
 				95247D2D287425FD00D1E4A4 /* UIImageExtension.swift */,
 				957EBD0C2876B7D600A13872 /* UIView-Extension.swift */,
+				95ED97F82877CBAE0037CA7A /* UIColor-Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				95247D1A287412A000D1E4A4 /* HomeViewController.swift in Sources */,
 				95247D16287412A000D1E4A4 /* AppDelegate.swift in Sources */,
 				957EBD0D2876B7D600A13872 /* UIView-Extension.swift in Sources */,
+				95ED97F92877CBAE0037CA7A /* UIColor-Extension.swift in Sources */,
 				95247D18287412A000D1E4A4 /* SceneDelegate.swift in Sources */,
 				95247D2E287425FD00D1E4A4 /* UIImageExtension.swift in Sources */,
 				957EBD0F2876BE6D00A13872 /* CardView.swift in Sources */,
