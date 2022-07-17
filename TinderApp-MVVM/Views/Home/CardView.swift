@@ -29,7 +29,7 @@ class CardView: UIView{
         return button
     }()
 
-    private let nameLabel = CardInfoLabel(frame: .zero, labelText: "ご飯、25", labelFont: .systemFont(ofSize: 40, weight: .heavy))
+    private let nameLabel = CardInfoLabel(labelText: "ご飯、25", labelFont: .systemFont(ofSize: 40, weight: .heavy))
 
 //    let nameLabel: UILabel = {
 //        let label = UILabel()
@@ -39,7 +39,7 @@ class CardView: UIView{
 //        return label
 //    }()
 
-    private let residenceLabel = CardInfoLabel(frame: .zero, labelText: "JAPAN", labelFont: .systemFont(ofSize: 20, weight: .regular))
+    private let residenceLabel = CardInfoLabel(labelText: "JAPAN", labelFont: .systemFont(ofSize: 20, weight: .regular))
 
 //    let residenceLabel: UILabel = {
 //        let label = UILabel()
@@ -49,7 +49,7 @@ class CardView: UIView{
 //        return label
 //    }()
 
-    private let hobbyLabel = CardInfoLabel(frame: .zero, labelText: "ビーデルとデート", labelFont: .systemFont(ofSize: 25, weight: .regular))
+    private let hobbyLabel = CardInfoLabel(labelText: "ビーデルとデート", labelFont: .systemFont(ofSize: 25, weight: .regular))
 //    let hobbyLabel: UILabel = {
 //        let label = UILabel()
 //        label.font = .systemFont(ofSize: 25, weight: .regular)
@@ -58,7 +58,7 @@ class CardView: UIView{
 //        return label
 //    }()
 
-    private let introductionLabel = CardInfoLabel(frame: .zero, labelText: "研究が好きです", labelFont: .systemFont(ofSize: 25,weight: .regular))
+    private let introductionLabel = CardInfoLabel(labelText: "研究が好きです", labelFont: .systemFont(ofSize: 25,weight: .regular))
 
 //    let introductionLabel: UILabel = {
 //        let label = UILabel()
@@ -68,7 +68,7 @@ class CardView: UIView{
 //        return label
 //    }()
 
-    private let goodLabel = CardInfoLabel(frame: .zero, labelText: "GOOD", labelColor: .rgb(red: 137, green: 223, blue: 86))
+    private let goodLabel = CardInfoLabel(labelText: "GOOD", labelColor: .rgb(red: 137, green: 223, blue: 86))
 //    let goodLabel: UILabel = {
 //        let label = UILabel()
 //        label.font = .boldSystemFont(ofSize: 45)
@@ -82,7 +82,7 @@ class CardView: UIView{
 //        return label
 //    }()
 
-    private let nopeLabel = CardInfoLabel(frame: .zero, labelText: "NOPE", labelColor: .rgb(red: 222, green: 110, blue: 110))
+    private let nopeLabel = CardInfoLabel(labelText: "NOPE", labelColor: .rgb(red: 222, green: 110, blue: 110))
 
 //    let nopeLabel: UILabel = {
 //        let label = UILabel()

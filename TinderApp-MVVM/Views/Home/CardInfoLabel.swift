@@ -9,11 +9,11 @@ import UIKit
 class CardInfoLabel: UILabel{
 
     // nopeとgoodのラベル
-    init(frame: CGRect,labelText: String,labelColor: UIColor){
-        super.init(frame: frame)
+    init(labelText: String,labelColor: UIColor){
+        super.init(frame: .zero)
 
         font = .boldSystemFont(ofSize: 45)
-        text = labelText
+        self.text = labelText
         textColor = .rgb(red: 222, green: 110, blue: 110)
         layer.borderWidth = 3
         layer.borderColor = labelColor.cgColor
@@ -24,8 +24,8 @@ class CardInfoLabel: UILabel{
 
 
     // その他のtextのラベル
-    init(frame: CGRect,labelText: String,labelFont: UIFont){
-        super.init(frame: frame)
+    init(labelText: String,labelFont: UIFont){
+        super.init(frame: .zero)
         font = labelFont
         text = labelText
         textColor = .white
