@@ -110,6 +110,7 @@
 		95247D14287412A000D1E4A4 /* TinderApp-MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				957F34D528852BF600B547FC /* ViewModel */,
 				95247D2F2874260600D1E4A4 /* Extensions */,
 				95247D2A28741DBF00D1E4A4 /* Views */,
 				95247D2928741D8F00D1E4A4 /* ViewContorllers */,
@@ -170,6 +171,13 @@
 				95B32DB72883940600ED1504 /* RegisterButton.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		957F34D528852BF600B547FC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
