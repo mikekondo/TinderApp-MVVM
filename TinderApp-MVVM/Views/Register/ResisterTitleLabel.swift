@@ -8,9 +8,9 @@
 import UIKit
 
 class ResisterTitleLabel: UILabel{
-    init(){
+    init(text: String){
         super.init(frame: .zero)
-        self.text = "Tinder"
+        self.text = "\(text)"
         self.font = .boldSystemFont(ofSize: 80)
         self.textColor = .white
     }

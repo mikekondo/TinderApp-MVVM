@@ -7,16 +7,18 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import FirebaseAuth
 import FirebaseFirestore
 
 class RegisterViewController: UIViewController{
 
     private let disposeBag = DisposeBag()
-
+    private let viewModel = RegisterViewModel()
+    private let alreadyHaveAccountButton = UIButton(type: .system).createAboutButton(text: "既にアカウントをお持ちの方はこちら")
 
     // MARK: UIViews
-    private let titleLabel = ResisterTitleLabel()
+    private let titleLabel = ResisterTitleLabel(text: "Tinder")
 
      private let nameTextField = RegisterTextField(placeHolder: "名前")
 //    let nameTextField: UITextField = {
@@ -42,7 +44,7 @@ class RegisterViewController: UIViewController{
 //        textField.font = .systemFont(ofSize: 14)
 //        return textField
 //    }()
-    private let registerButton = RegisterButton()
+    private let registerButton = RegisterButton(text: "登録")
 
 //    let registerButton: UIButton = {
 //        let button = UIButton(type: .system)
@@ -60,6 +62,11 @@ class RegisterViewController: UIViewController{
         setupBindings()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+
     // MARK: Methods
     private func setupGradientLayer(){
         let layer = CAGradientLayer()
@@ -73,7 +80,6 @@ class RegisterViewController: UIViewController{
 
     private func setupLayout(){
         passwordTextField.isSecureTextEntry = true
-        view.backgroundColor = .yellow
 
         let baseStackView = UIStackView(arrangedSubviews: [nameTextField,emailTextField,passwordTextField,registerButton])
         baseStackView.axis = .vertical
@@ -81,64 +87,100 @@ class RegisterViewController: UIViewController{
         baseStackView.spacing = 20
         view.addSubview(baseStackView)
         view.addSubview(titleLabel)
+        view.addSubview(alreadyHaveAccountButton)
 
         nameTextField.anchor(height: 45)
         titleLabel.anchor(bottom: baseStackView.topAnchor, centerX: view.centerXAnchor,bottomPadding: 20)
         baseStackView.anchor(left: view.leftAnchor,right: view.rightAnchor,centerY: view.centerYAnchor,height: 200,leftPadding: 40,rightPadding: 40)
+        alreadyHaveAccountButton.anchor(top: baseStackView.bottomAnchor, centerX: view.centerXAnchor,topPadding: 20)
     }
 
     private func setupBindings(){
-
+        // textFieldのバインディング
         // 循環参照を防ぐためにweak selfをつけるb
         nameTextField.rx.text.asDriver().drive { [weak self] text in
+            self?.viewModel.nameTextInput.onNext(text ?? "")
             // textの情報ハンドル
         }
         .disposed(by: disposeBag)
 
         emailTextField.rx.text.asDriver().drive { [weak self] text in
+            self?.viewModel.emailTextInput.onNext(text ?? "")
             // textの情報ハンドル
         }
         .disposed(by: disposeBag)
 
         passwordTextField.rx.text.asDriver().drive { [weak self] text in
+            self?.viewModel.passwordTextInput.onNext(text ?? "")
             // textの情報ハンドル
         }
         .disposed(by: disposeBag)
 
         registerButton.rx.tap.asDriver().drive { [weak self] _ in
             // 登録時の処理
-            print("タップ処理反映されてる？")
-            self?.createUserToFireAuth()
+            self?.createUser()
+        }
+        .disposed(by: disposeBag)
+
+        // ボタンのバインディング
+        alreadyHaveAccountButton.rx.tap.asDriver().drive { [weak self] _ in
+            let login = LoginViewController()
+            self?.navigationController?.pushViewController(login, animated: true)
+        }
+        .disposed(by: disposeBag)
+
+
+        // viewModelのバインディング
+        viewModel.validRegisterDriver.drive { validAll in
+            print("validAll: ",validAll)
+            self.registerButton.isEnabled = validAll
+            self.registerButton.backgroundColor = validAll ? .rgb(red: 227, green: 48, blue: 78) : .init(white: 0.7,alpha: 1)
         }
         .disposed(by: disposeBag)
     }
 
-    private func createUserToFireAuth(){
-        guard let email = emailTextField.text else { return }
-        guard let password = passwordTextField.text else{ return }
-
-        Auth.auth().createUser(withEmail: email, password: password) { (auth, err) in
-            if let err = err{
-                print("auth情報の保存に失敗",err)
-                return
+    private func createUser(){
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        let name = nameTextField.text ?? ""
+        Auth.createUserToFireAuth(email: email, password: password, name: name){(success) in
+            if success{
+                print("処理が完了")
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                print("ユーザ登録失敗")
             }
 
-            guard let uid = auth?.user.uid else { return }
-            self.setUserDataToFireStore(email: email, uid: uid)
         }
     }
 
-    private func setUserDataToFireStore(email: String,uid: String){
-        guard let name = nameTextField.text else{ return }
-        let document: Dictionary<String,Any> = ["name": name,"email": email,"createdAt": Timestamp()]
-        Firestore.firestore().collection("users").document(uid).setData(document) { error in
-            if let error = error{
-                print("ユーザ情報の保存に失敗",error)
-                return
-            }
-            print("ユーザ情報の保存に成功")
-        }
-    }
+//    private func createUserToFireAuth(){
+//        guard let email = emailTextField.text else { return }
+//        guard let password = passwordTextField.text else{ return }
+//
+//        Auth.auth().createUser(withEmail: email, password: password) { (auth, err) in
+//            if let err = err{
+//                print("auth情報の保存に失敗",err)
+//                return
+//            }
+//
+//            guard let uid = auth?.user.uid else { return }
+//            self.setUserDataToFireStore(email: email, uid: uid)
+//        }
+//    }
+//
+    
+//    private func setUserDataToFireStore(email: String,uid: String){
+//        guard let name = nameTextField.text else{ return }
+//        let document: Dictionary<String,Any> = ["name": name,"email": email,"createdAt": Timestamp()]
+//        Firestore.firestore().collection("users").document(uid).setData(document) { error in
+//            if let error = error{
+//                print("ユーザ情報の保存に失敗",error)
+//                return
+//            }
+//            print("ユーザ情報の保存に成功")
+//        }
+//    }
 
 }
 
