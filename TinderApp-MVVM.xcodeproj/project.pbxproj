@@ -29,6 +29,7 @@
 		957EBD0D2876B7D600A13872 /* UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EBD0C2876B7D600A13872 /* UIView-Extension.swift */; };
 		957EBD0F2876BE6D00A13872 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EBD0E2876BE6D00A13872 /* CardView.swift */; };
 		957F34D728852FD800B547FC /* ResisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F34D628852FD800B547FC /* ResisterViewModel.swift */; };
+		95937AA5288E6146008C203D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95937AA4288E6146008C203D /* User.swift */; };
 		95B32DB62883917600ED1504 /* ResisterTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B32DB52883917600ED1504 /* ResisterTitleLabel.swift */; };
 		95B32DB82883940600ED1504 /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B32DB72883940600ED1504 /* RegisterButton.swift */; };
 		95DAC66428763F590000A543 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 95DAC66328763F590000A543 /* PKHUD */; };
@@ -58,6 +59,7 @@
 		957EBD0C2876B7D600A13872 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
 		957EBD0E2876BE6D00A13872 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		957F34D628852FD800B547FC /* ResisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResisterViewModel.swift; sourceTree = "<group>"; };
+		95937AA4288E6146008C203D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		95B32DB52883917600ED1504 /* ResisterTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResisterTitleLabel.swift; sourceTree = "<group>"; };
 		95B32DB72883940600ED1504 /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
 		95ED97F82877CBAE0037CA7A /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		95247D14287412A000D1E4A4 /* TinderApp-MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				95937AA3288E6137008C203D /* Models */,
 				957F34D528852BF600B547FC /* ViewModel */,
 				95247D2F2874260600D1E4A4 /* Extensions */,
 				95247D2A28741DBF00D1E4A4 /* Views */,
@@ -190,6 +193,14 @@
 				957F34D628852FD800B547FC /* ResisterViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		95937AA3288E6137008C203D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				95937AA4288E6146008C203D /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +346,7 @@
 				95247D2C28741DD900D1E4A4 /* BottomControlView.swift in Sources */,
 				95616FA7288796F00075904D /* Firebase-Extension.swift in Sources */,
 				95B32DB62883917600ED1504 /* ResisterTitleLabel.swift in Sources */,
+				95937AA5288E6146008C203D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

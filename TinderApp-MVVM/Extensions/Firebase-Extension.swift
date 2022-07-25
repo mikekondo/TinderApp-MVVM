@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-// MARK: 
+// MARK: Auth
 extension Auth {
     static func createUserToFireAuth(email: String?,password: String?,name: String,completion: @escaping (Bool) -> Void){
         guard let email = email else { return }
@@ -26,6 +26,16 @@ extension Auth {
             }
         }
     }
+    static func loginWithFireAuth(email: String, password: String, completion: @escaping (Bool) -> Void){
+        Auth.auth().signIn(withEmail: email, password: password) { res, error in
+            if let error = error{
+                print("ログインに失敗",error)
+                return
+            }
+            print("ログインに成功")
+            completion(true)
+        }
+    }
 
 }
 
@@ -41,6 +51,21 @@ extension Firestore {
             }
             completion(true)
             print("ユーザ情報の保存に成功")
+        }
+    }
+
+    // Firestoreからユーザ情報の取得
+    static func fetchUserFromFirestore(uid: String,completion: @escaping (User?) -> Void){
+        let userDB = Firestore.firestore().collection("users").document("\(uid)")
+        userDB.getDocument { snapShot, error in
+            if let error = error{
+                print("getDocumentのエラー",error)
+                completion(nil)
+                return
+            }
+            guard let data = snapShot?.data() else{ return }
+            let user = User(dic: data)
+            completion(user)
         }
     }
 }

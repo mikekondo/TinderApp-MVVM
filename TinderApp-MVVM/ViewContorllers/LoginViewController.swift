@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import FirebaseAuth
+import PKHUD
 
 class LoginViewController: UIViewController {
 
@@ -63,21 +64,21 @@ class LoginViewController: UIViewController {
         .disposed(by: disposeBag)
 
         loginButton.rx.tap.asDriver().drive{ [weak self] _ in
-            self?.loginWithFireAuth()
+            self?.login()
         }
         .disposed(by: disposeBag)
     }
 
-    private func loginWithFireAuth(){
+    private func login(){
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-        Auth.auth().signIn(withEmail: email, password: password) { res, error in
-            if let error = error{
-                print("ログインに失敗",error)
-                return
+
+        HUD.show(.progress)
+        Auth.loginWithFireAuth(email: email, password: password) { success in
+            HUD.hide()
+            if success{
+                self.dismiss(animated: true)
             }
-            print("ログインに成功")
-            self.dismiss(animated: true,completion: nil)
         }
     }
 

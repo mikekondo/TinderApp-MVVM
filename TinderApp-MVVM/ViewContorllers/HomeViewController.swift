@@ -7,8 +7,11 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class HomeViewController: UIViewController {
+
+    private var user: User?
 
     let logoutButton: UIButton = {
         let button = UIButton(type: .system)
@@ -20,6 +23,27 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let uid = Auth.auth().currentUser?.uid else{
+            return
+        }
+        Firestore.fetchUserFromFirestore(uid: uid) { user in
+            guard let user = user else { return }
+            self.user = user
+        }
+    }
+
+//    private func fetchUserFromFirestore(uid: String){
+//        let userDB = Firestore.firestore().collection("users").document("\(uid)")
+//        userDB.getDocument { snapShot, error in
+//            if let error = error{
+//                print("getDocumentのエラー",error)
+//            }
+//
+//        }
+//    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
